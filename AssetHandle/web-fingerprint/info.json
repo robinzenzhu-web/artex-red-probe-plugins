@@ -1,0 +1,8 @@
+{
+  "name": "web-fingerprint",
+  "module": "AssetHandle",
+  "version": "v0.2.2",
+  "parameter": "",
+  "help": "Tag HTTP assets with CMS / middleware / framework / WAF / panel fingerprints. Response-evidence only; URL extension match is path-bounded.",
+  "introduction": "Artex-red-probe fingerprint plugin (AssetHandle). v0.2.2 fixes false positives: no upstream tech propagation, path-bounded extension matching (host.docker.internal no longer matches .do)."
+}

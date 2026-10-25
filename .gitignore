@@ -1,0 +1,6 @@
+# Subscription packs contain real PoCs — never publish
+subscription-packs/
+
+# Local artifacts
+*.log
+*.tmp

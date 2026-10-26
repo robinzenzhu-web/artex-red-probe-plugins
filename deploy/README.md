@@ -41,6 +41,21 @@ SCOPESENTRY_NODE=node-lab
 ARTEX_TEMPLATE_ID=...
 ```
 
+## ARTEX 构建（Windows）
+
+`ARTEX-/build-local.ps1` 一键完成前端构建 + 内嵌编译：
+
+```powershell
+cd D:\AI\ARTEX-
+./build-local.ps1 -Output D:\AI\artex-lab\bin\artex.exe
+```
+
+依次执行：检查 node/npm/go → `npm ci`（node_modules 缺失时才跑）→ `NEXT_EXPORT=1 npm run build` → 拷 `web/out` 到 `server/webui/dist` → `go build -tags embedui`。
+
+幂等；`-ForceFrontend` 强制重建 UI，`-Clean` 先清两个输出目录。
+
+> **不带 `-tags embedui` 构建的二进制只提供 API**，访问根路径会返回「前端未内嵌到此二进制（开发用 next dev；发布用 -tags embedui 构建）」。实测带 UI 为 49.6 MB，不带为 41.9 MB。
+
 ## ARTEX 侧接线
 
 ### 1. MCP 配置

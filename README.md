@@ -83,3 +83,17 @@ subscription-packs/
 
 见 `docs/matcher-dsl.md`（v0.2.0：words OR、regex、version 比对、negative、template-level OR）。
 
+
+## 部署
+
+见 [`deploy/README.md`](deploy/README.md)。
+
+```powershell
+cd deploy
+./deploy.ps1 -HostPort 19082     # 幂等：容器/插件/模板已存在则跳过
+./watchdog.ps1 -Loop             # 守护：队列卡死 / 计数泄漏 / 节点离线自动恢复
+```
+
+部署脚本完成：起四容器 → 读凭据 → 建 API Key → 导插件 → 灌 nuclei 模板 → 投放 PoC 包 → 建扫描模板 → 输出 `.deployment.env`。
+
+已知缺陷与运维兜底（节点重启卡 5 分钟、任务状态滞后等）见该文档。

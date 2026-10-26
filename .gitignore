@@ -4,3 +4,11 @@ subscription-packs/
 # Local artifacts
 *.log
 *.tmp
+
+# Deploy artifacts (contain credentials / large binaries)
+deploy/.deployment.env
+deploy/scopesentry/
+deploy/watchdog.log
+deploy/nuclei-templates/
+deploy/*.zip
+deploy/*.tar
